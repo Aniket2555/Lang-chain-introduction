@@ -1,0 +1,32 @@
+You're encountering a PowerShell execution policy restriction. PowerShell prevents running scripts by default for security reasons. To fix this, you need to change the execution policy. Follow these steps:
+
+### **Solution: Change Execution Policy**
+1. **Open PowerShell as Administrator:**
+   - Press `Win + X` and select **PowerShell (Admin)** or **Terminal (Admin)**.
+
+2. **Check the Current Execution Policy:**
+   ```powershell
+   Get-ExecutionPolicy
+   ```
+   If it returns **Restricted**, that means scripts cannot be executed.
+
+3. **Temporarily Allow Scripts for This Session:**
+   ```powershell
+   Set-ExecutionPolicy Unrestricted -Scope Process
+   ```
+   - This will allow you to activate the virtual environment **only for this session**.
+   - If you close PowerShell, it will revert to the original setting.
+
+4. **(Optional) Permanently Change Execution Policy:**
+   If you want a more permanent solution, set it to **RemoteSigned**:
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+   - This allows locally created scripts to run but blocks downloaded scripts unless signed.
+
+5. **Activate the Virtual Environment Again:**
+   ```powershell
+   venv\Scripts\Activate
+   ```
+
+Let me know if you run into any issues! 🚀
