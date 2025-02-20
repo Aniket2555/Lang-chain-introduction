@@ -1,0 +1,11 @@
+Add .env to .gitignore
+
+Remove the .env file from Git tracking
+    git rm --cached .env
+    git commit -m "Remove .env from tracking"
+
+Rewrite Your Git History to Remove Secrets    
+    git filter-branch --index-filter 'git rm --cached --ignore-unmatch .env'
+
+Push the changes
+    git push origin main --force
